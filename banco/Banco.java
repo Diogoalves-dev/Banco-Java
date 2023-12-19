@@ -8,9 +8,7 @@ import javax.swing.JOptionPane;
  *
  * @author diogo
  */
-public class Banco {
-
-    
+public class Banco { 
     public static void main(String[] args) {
         
         ArrayList<Conta> contas = new ArrayList<Conta>();
@@ -18,7 +16,6 @@ public class Banco {
         int i = 0;
         String opcoes[] = {"Criar Conta","Procurar Conta"};
         String entrada;
-        
         
         do{
             entrada = (String) JOptionPane.showInputDialog(null,"Escolha","Bem vindo",1,null,opcoes,opcoes[0]);
@@ -56,8 +53,7 @@ public class Banco {
                                             break;
                                         }else{
                                             senha = Integer.parseInt(entrada);
-                                        }
-                                        
+                                        }                                        
                                         conta.Criarconta(nome, numero, senha);
                                         contas.add(conta);
                                         existe = false;
@@ -69,14 +65,12 @@ public class Banco {
                                     }
                                 }
                             }else{
-                                entrada = JOptionPane.showInputDialog(null,"Crie uma senha contendo apenas números:\n(minino 4 digitos)","",1);
-                                
+                                entrada = JOptionPane.showInputDialog(null,"Crie uma senha contendo apenas números:\n(minino 4 digitos)","",1);                               
                                 if(entrada == null){
                                     break;
                                 }else{
                                     senha = Integer.parseInt(entrada);
                                 }
-                                
                                 conta.Criarconta(nome, numero, senha);
                                 contas.add(conta);
                                 existe = false;
@@ -112,7 +106,6 @@ public class Banco {
                                 int tentativas = 0;
                                 do{
                                     entrada = JOptionPane.showInputDialog(null,"Bem vindo " + contas.get(posicao).getDono() + "\ninforme sua senha: ","Login",1);
-                                    
                                     if(entrada == null){
                                         break;
                                     }else{
