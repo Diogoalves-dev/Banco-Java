@@ -3,7 +3,7 @@ package banco;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
+import javax.swing.UIManager;
 /**
  *
  * @author diogo
@@ -12,20 +12,23 @@ public class Banco {
     public static void main(String[] args) {
         
         ArrayList<Conta> contas = new ArrayList<Conta>();
-        int opcao = 0;
+        int continuar = 0;
         int i = 0;
-        String opcoes[] = {"Criar Conta","Procurar Conta"};
+        int opcoes;
         String entrada;
         
         do{
-            entrada = (String) JOptionPane.showInputDialog(null,"Escolha","Bem vindo",1,null,opcoes,opcoes[0]);
-            
-            if(entrada == null){
-                entrada = "Sair";
+            UIManager.put("OptionPane.yesButtonText","Criar conta");
+            UIManager.put("OptionPane.noButtonText","Procurar conta");
+            UIManager.put("OptionPane.cancelButtonText","Sair");
+            opcoes = JOptionPane.showConfirmDialog(null, "Bem vindo","Entrada",1);
+
+            if(opcoes == -1){
+                opcoes = 2;
             }
             
-                switch (entrada){
-                    case "Criar Conta":
+                switch (opcoes){
+                    case 0:
                         String nome = JOptionPane.showInputDialog(null,"Informe seu nome:","",1);
                         int numero;
                         int senha;
@@ -80,7 +83,7 @@ public class Banco {
                         
                     break;
                     
-                    case "Procurar Conta":
+                    case 1:
                         int posicao = 0;
                         boolean achou = false;
                         do{
@@ -145,9 +148,9 @@ public class Banco {
                       
                     break;
                     
-                    case "Sair":
+                    case 2:
                         JOptionPane.showMessageDialog(null, "Finalizando...");
-                        opcao = 3;
+                        continuar = 3;
                     break;
                     
                     default:
@@ -155,7 +158,7 @@ public class Banco {
                     break;
                 }
 
-        }while(opcao != 3);
+        }while(continuar != 3);
     }
     
 }
